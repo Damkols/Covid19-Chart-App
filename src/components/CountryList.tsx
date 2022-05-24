@@ -1,25 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import CountryItem from "./CountryItem";
 import type { Country } from "./types";
 
 // font-family: 'Barlow', sans-serif;
 interface CountryListProps {
   countries: Country[];
+  onItemClick: (country: Country) => void;
 }
 
 const ListWrapper = styled.ul`
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-`;
-const ListItems = styled.li`
-  list-style-type: none;
-  flex: 0 0 50%;
-  text-align: center;
-
-  @media (min-width: 420px) {
-    flex: 0 0 33.3%;
-  }
+  cursor: pointer;
 `;
 
 const ListContent = styled.div`
@@ -30,19 +24,17 @@ const ListContent = styled.div`
 
 const CountryList: React.FunctionComponent<CountryListProps> = ({
   countries,
+  onItemClick,
 }) => {
   return (
     <ListWrapper>
       {countries.map((country) => {
         return (
-          <ListItems key={country.ID}>
-            <div>
-              <h4>{country.Country}</h4>
-              <div>New Confirmed: {country.NewConfirmed}</div>
-              <div>New Deaths: {country.NewDeaths}</div>
-              <div>New Recovered: {country.NewRecovered}</div>
-            </div>
-          </ListItems>
+          <CountryItem
+            key={country.ID}
+            country={country}
+            onItemClick={onItemClick}
+          />
         );
       })}
     </ListWrapper>
