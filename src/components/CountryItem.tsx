@@ -24,7 +24,11 @@ const ListItems = styled.li`
 const ListContent = styled.div<ListContentProps>`
   background-color: ${(props) => (props.isActive ? "#761e1e" : "#f7f7f7")};
   margin: 5px;
-  padding: 10px 0;
+  padding: 20px 0;
+
+  @media (min-width: 420px) {
+    padding: 20px 40px;
+  }
 `;
 
 const CountryItem: React.FunctionComponent<CountryItemProps> = ({

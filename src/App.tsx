@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import BarChart from "./components/BarChart";
 import CountryList from "./components/CountryList";
 import GlobalInfo from "./components/GlobalInfo";
+import styled from "styled-components";
 import type { ResponseData, Country } from "./components/types";
 
 const App: React.FunctionComponent = () => {
@@ -23,7 +25,7 @@ const App: React.FunctionComponent = () => {
 
   const onCountryClick = (country: Country) => {
     const countryIndex = activeCountries.findIndex(
-      (activeCountry) => activeCountry.ID
+      (activeCountry) => activeCountry.ID === country.ID
     );
 
     if (countryIndex > -1) {
@@ -36,12 +38,15 @@ const App: React.FunctionComponent = () => {
     }
   };
 
+  const Title = styled.h2`
+    margin: 30px auto;
+    text-align: center;
+    font-weight: 700;
+  `;
+
   return (
     <div className="App">
       <div className="global__info">
-        {activeCountries.map((activeCountry) => {
-          return <span>{activeCountry.Country}</span>;
-        })}
         {data ? (
           <>
             <GlobalInfo
@@ -49,6 +54,15 @@ const App: React.FunctionComponent = () => {
               newDeaths={data?.Global.NewDeaths}
               newRecovered={data?.Global.NewRecovered}
             />
+            <br />
+            {activeCountries.length ? (
+              <BarChart countries={activeCountries} />
+            ) : null}
+
+            <Title>
+              Click on countries to get <span>New confirmed</span> cases from
+              the Chart!!!
+            </Title>
             <CountryList
               countries={data?.Countries}
               onItemClick={onCountryClick}

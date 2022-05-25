@@ -3,7 +3,6 @@ import styled from "styled-components";
 import CountryItem from "./CountryItem";
 import type { Country } from "./types";
 
-// font-family: 'Barlow', sans-serif;
 interface CountryListProps {
   countries: Country[];
   onItemClick: (country: Country) => void;
@@ -14,12 +13,7 @@ const ListWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
   cursor: pointer;
-`;
-
-const ListContent = styled.div`
-  background-color: #f7f7f7;
-  margin: 5px;
-  padding: 10px 0;
+  margin: 0 auto;
 `;
 
 const CountryList: React.FunctionComponent<CountryListProps> = ({
