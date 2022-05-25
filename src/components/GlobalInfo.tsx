@@ -10,6 +10,14 @@ interface GlobalInfoProps {
 const Wrapper = styled.div`
   text-align: center;
 `;
+const Title1 = styled.h1`
+  margin: 20px auto;
+  text-align: center;
+`;
+const Title2 = styled.h3`
+  margin: 10px auto;
+  text-align: center;
+`;
 
 const GlobalInfo: React.FunctionComponent<GlobalInfoProps> = ({
   newConfirmed,
@@ -18,10 +26,14 @@ const GlobalInfo: React.FunctionComponent<GlobalInfoProps> = ({
 }) => {
   return (
     <Wrapper>
-      <h1>Global Covid-19 data</h1>
-      <h3>New Confirmed: {new Intl.NumberFormat().format(newConfirmed)}</h3>
-      <h3>New Deaths: {new Intl.NumberFormat().format(newDeaths)}</h3>
-      <h3>New Recovered: {new Intl.NumberFormat().format(newRecovered)}</h3>
+      <Title1>Global Covid-19 data</Title1>
+      <Title2>
+        New Confirmed: {new Intl.NumberFormat().format(newConfirmed)}
+      </Title2>
+      <Title2>New Deaths: {new Intl.NumberFormat().format(newDeaths)}</Title2>
+      <Title2>
+        New Recovered: {new Intl.NumberFormat().format(newRecovered)}
+      </Title2>
     </Wrapper>
   );
 };

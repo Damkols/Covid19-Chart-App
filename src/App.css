@@ -9,4 +9,6 @@
 body {
   font-family: "Barlow", sans-serif;
   background-color: #f1f1f1;
+  width: min(95%, 1200px);
+  margin-inline: auto;
 }
